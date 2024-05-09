@@ -1,0 +1,330 @@
+* {
+  margin: 0;
+  overflow: hidden;
+  background-color: transparent;
+  transition: 0.3s;
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+  text-decoration: none;
+}
+
+#App {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+}
+
+#sidebar {
+  left: 0;
+  top: 0;
+  background-color: #081225;
+  opacity: 0;
+  transform: translateX(0px);
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow-y: auto;
+}
+
+#sidebar nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 20px 0;
+}
+
+a:active,
+a:link,
+a:visited {
+  color: white;
+}
+
+.ListLink {
+  line-height: 20px;
+  font-size: 14px;
+  color: white;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.CloseButton {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  background-color: transparent;
+  border: none;
+  color: white;
+  text-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red, 0 0 40px red;
+  cursor: pointer;
+  font-size: 2rem;
+  padding: 1.4rem;
+}
+
+.Dropdown {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: white;
+  border-radius: 50%;
+  top: 7px;
+  right: -21px;
+}
+
+.ListLinkItem {
+  position: relative;
+  color: #131313;
+  letter-spacing: 0.15em;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  text-shadow: 0px 3px 3px rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.ListLinkItem a:not(.current-page):hover {
+  text-shadow: 0px 3px 3px #ff002b;
+}
+
+.ListLinkItem > p {
+  color: green;
+  padding-top: 5px;
+  padding-right: 10px;
+}
+
+.ListLinkItem p {
+  padding-bottom: 10px;
+}
+
+.ListLinkItem a {
+  position: relative;
+  bottom: 3px;
+}
+
+.ListLinkItem > *:not(.DropdownContent),
+.CloseButton {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+.current-page {
+  cursor: default;
+  text-shadow: 2px 0 0px #800040, 3px 2px 0px rgba(77, 0, 38, 0.5), 3px 0 1px #ff002b,
+    5px 0 1px #800015, 6px 2px 1px rgba(77, 0, 13, 0.5), 6px 0 3px #ff5500,
+    8px 0 3px #802a00, 9px 2px 3px rgba(77, 25, 0, 0.5), 9px 0 6px #ffd500,
+    11px 0 6px #806a00, 12px 2px 6px rgba(77, 66, 0, 0.5), 12px 0 10px #d4ff00,
+    14px 0 10px #6a8000, 15px 2px 10px rgba(64, 77, 0, 0.5), 15px 0 15px #80ff00,
+    17px 0 15px #408000, 17px 2px 15px rgba(38, 77, 0, 0.5);
+}
+
+.checkbox-bipolar-input {
+  display: none;
+}
+
+.checkbox-bipolar-input:checked + label .checkbox-bipolar:after {
+  left: 18px;
+  right: 2px;
+}
+
+.checkbox-bipolar-input:checked + label .checkbox-bipolar .on {
+  opacity: 0.5;
+}
+
+.checkbox-bipolar-input:checked + label .checkbox-bipolar .off {
+  opacity: 0;
+}
+
+.checkbox-bipolar {
+  margin-left: 16px;
+  width: 40px;
+  height: 25px;
+  border-radius: 10px;
+  border: 1px solid #36c373;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.checkbox-bipolar:after {
+  content: '';
+  display: block;
+  position: absolute;
+  background: #36c373;
+  left: 2px;
+  top: 2px;
+  bottom: 2px;
+  right: 18px;
+  border-radius: 8px;
+  transition: all 0.3s;
+}
+
+.checkbox-bipolar .on {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 6px;
+  opacity: 0;
+  transition: 0.3s;
+  font-family: sans-serif;
+  font-size: 14px;
+}
+
+.checkbox-bipolar .off {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 5px;
+  opacity: 0.5;
+  font-family: sans-serif;
+  transition: 0.3s;
+  font-size: 14px;
+}
+
+.DropdownContent {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 1px dashed lightcoral;
+  color: white;
+  transition: 0.3s;
+  max-height: 220px;
+  overflow-y: auto;
+  text-shadow: none;
+  position: relative;
+}
+
+.DropdownContent::-webkit-scrollbar {
+  width: 0px;
+}
+
+.CardPanel {
+  line-height: 18px;
+  font-size: 0.8rem;
+  text-align: left;
+  width: 90%;
+  transition: 0s;
+}
+
+.CardPanel .CardPanel_Copied {
+  color: #36c373;
+}
+
+.CardPanel .CardPanel_Copied:is(span):hover {
+  color: #36c373;
+}
+
+.CardPanel span {
+  font-weight: 900;
+  color: rgb(240, 128, 128);
+}
+
+.CardPanel span:hover {
+  color: rgb(240, 80, 80);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
+}
+
+canvas {
+  z-index: 1;
+}
+
+@media (min-width: 769px) {
+  #sidebar:not(.modal) {
+    position: relative;
+    padding: 0 20px;
+    width: auto;
+    opacity: 0.8;
+    transform: translateX(0px);
+    z-index: 2;
+  }
+
+  #sidebar.modal,
+  #sidebar.modal * {
+    z-index: -1;
+  }
+
+  #sidebar:not(.modal) nav {
+    width: 200px;
+  }
+
+  .ListLinkItem {
+    font-size: 1rem;
+  }
+
+  .ListLinkItem:not(:last-child) {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .CardPanel {
+    cursor: pointer;
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 768px),
+(orientation: portrait) {
+  #sidebar.modal {
+    z-index: -1;
+  }
+
+  #sidebar.modal.active * {
+    z-index: 2;
+    margin: auto;
+  }
+
+  #sidebar.modal {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    opacity: 0.8;
+    z-index: 2;
+    transform: translateX(-100vw);
+  }
+
+  #sidebar.modal.active {
+    transform: translateX(0px);
+    z-index: 3;
+  }
+
+  .ListLinkItem {
+    padding-bottom: 10px;
+  }
+
+  .ListLinkItem p {
+    padding-bottom: 0px;
+    font-size: 0.8rem;
+  }
+
+  .DropdownContent {
+    width: 60%;
+  }
+
+  .CardPanel p {
+    font-size: 0.7rem;
+  }
+}
+
+.Clipboard {
+  position: absolute;
+  right: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: 0s;
+}
